@@ -15,6 +15,7 @@ jobs:
           paths:
             - ~/.m2
           key: cci-demo-clojure-{{ checksum "project.clj" }}
+      - run: lein deps :tree
       - run: lein do test, uberjar
       - store_artifacts:
           path: target/uberjar/cci-demo-clojure.jar
